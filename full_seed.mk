@@ -23,7 +23,6 @@ $(call inherit-product, device/google/seed/device.mk)
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := seed
 PRODUCT_NAME := full_seed
-PRODUCT_BRAND := google
+PRODUCT_BRAND := Google
 PRODUCT_MODEL := General Mobile 4G
 PRODUCT_MANUFACTURER := google
-

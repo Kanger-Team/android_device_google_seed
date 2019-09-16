@@ -28,6 +28,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------------------------------------------------*/
 
 #include <stdio.h>
+#include <string.h>
 #include <CalibrationModule.h>
 #include <sensors.h>
 
@@ -386,7 +387,7 @@ static int config_pocket(int cmd, struct sensor_algo_args *args)
 	return 0;
 }
 
-static int cal_init(const struct sensor_cal_module_t *module __attribute__((unused)))
+static int cal_init(const struct sensor_cal_module_t *module __attribute__((unused)), struct sensor_algo_args *args __attribute__((unused)))
 {
 	AKMPRMS *prms = &g_prms;
 
