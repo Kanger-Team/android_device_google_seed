@@ -14,4 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/ion_seed.mk
+    $(LOCAL_DIR)/aosp_seed.mk
+
+COMMON_LUNCH_CHOICES := \
+    aosp_seed-userdebug \
+    aosp_seed-eng \
+    aosp_seed-user

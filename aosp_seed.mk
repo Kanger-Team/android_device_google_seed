@@ -14,21 +14,21 @@
 # limitations under the License.
 
 $(call inherit-product, device/google/seed/full_seed.mk)
-
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/ion/config/common_full_phone.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l_mr1.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
 
-TARGET_GAPPS_ARCH := arm
-TARGET_BOOT_ANIMATION_RES := 720
-#ION_BUILD_TYPE=Release
+# TARGET_GAPPS_ARCH := arm
+# TARGET_BOOT_ANIMATION_RES := 720
+# ION_BUILD_TYPE=Release
 
 #PRODUCT_PROPERTY_OVERRIDES += \
 #    ro.ion.maintainer=Yunus Akbaş(Celexa)
 
-PRODUCT_NAME := ion_seed
+PRODUCT_NAME := aosp_seed
 PRODUCT_DEVICE := seed
 PRODUCT_BRAND := google
 PRODUCT_MANUFACTURER := google
