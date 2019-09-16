@@ -59,9 +59,8 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-service.seed \
-    android.hardware.camera.provider@2.4-impl \
-    camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-impl-legacy \
+    camera.device@1.0-impl-legacy \
     camera.msm8916 \
     libmm-qcamera \
     Snap
@@ -83,8 +82,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     $(LOCAL_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
-    $(LOCAL_PATH)/keylayout/ft5x06_ts.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/ft5x06_ts.kl \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
+    $(LOCAL_PATH)/keylayout/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl \
     $(LOCAL_PATH)/configs/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/audio/acdb/QRD_Bluetooth_cal.acdb:$(TARGET_COPY_OUT_VENDOR)/etc/acdbdata/QRD/QRD_Bluetooth_cal.acdb \
@@ -165,18 +164,15 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0
 
 # Init scripts
-PRODUCT_PACKAGES += \
-    init.qcom.rc \
-    init.qcom.bt.sh \
+PRODUCT_PACKAGES +=\
+    fstab.qcom \
+    init.target.rc \
+	init.qcom.rc \
     init.qcom.mem.sh \
     init.qcom.power.rc \
-    init.qcom.ssr.rc \
-    init.qcom.ims.rc \
-    init.recovery.qcom.rc \
-    ueventd.qcom.rc \
     init.qcom.usb.rc \
-    fstab.qcom \
-    init.target.rc
+    init.recovery.qcom.rc \
+    ueventd.qcom.rc
 
 # Keystore
 PRODUCT_PACKAGES += \
@@ -229,13 +225,18 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
+
+
+# Touchscreen
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/display/synaptics_dsx_fw_update_boyi.bin:$(TARGET_COPY_OUT_VENDOR)/etc/firmware/synaptics_dsx_fw_update_boyi.bin
 
 # Power HAL
 PRODUCT_PACKAGES += \
@@ -258,16 +259,15 @@ PRODUCT_PACKAGES += \
 # Sensor HAL
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service.wt88047 \
-    calmodule.cfg \
-    libcalmodule_common \
-    sensors.msm8916 \
-    sensors.seed
+    accelcal \
+    AccCalibration \
+    sensord \
+    sensors.msm8916
 
-# Shims
+# GPS
 PRODUCT_PACKAGES += \
-    libshim_camera \
-    libshims_get_process_name
+    libshims_get_process_name \
+    libshims_flp
 
 # USB HAL
 PRODUCT_PACKAGES += \

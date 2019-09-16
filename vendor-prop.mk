@@ -21,6 +21,35 @@ vendor.audio.offload.gapless.enabled=true \
 vendor.audio_hal.period_size=192 \
 vendor.voice.path.for.pcm.voip=true
 
+# Camera
+camera2.portability.force_api=1
+
+# Dalvik
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapgrowthlimit=192m
+dalvik.vm.heapsize=512m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=512k
+dalvik.vm.heapmaxfree=8m
+
+# Factory reset protection
+ro.frp.pst=/dev/block/platform/soc.0/7824900.sdhci/by-name/frp
+
+# First api level, device has been commercially launched
+ro.product.first_api_level=22
+
+# Latest hardware revision supported
+ro.product.model.platform=1
+
+# Radio
+persist.radio.multisim.config=dsds
+persist.radio.custom_ecc=1
+persist.radio.ecc_hard_1=998
+persist.radio.ecc_hard_count=1
+rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
+ro.telephony.default_network=9
+
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
 qcom.bluetooth.soc=smd \
@@ -65,32 +94,6 @@ ro.min_freq_0=800000 \
 ro.sys.fw.dex2oat_thread_count=3 \
 ro.vendor.extension_library=libqti-perfd-client.so
 
-# RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-persist.data.qmi.adb_logmask=0 \
-persist.data.target=dpm1 \
-persist.radio.apm_sim_not_pwdn=1 \
-persist.radio.custom_ecc=1 \
-persist.radio.ecc_hard_count=1 \
-persist.radio.ecc_hard_1=112,911,110,122,119,120,000,118 \
-persist.radio.multisim.config=dsds \
-persist.vendor.radio.apm_sim_not_pwdn=1 \
-ril.subscription.types=RUIM \
-rild.libpath=/vendor/lib/libril-qc-qmi-1.so \
-ro.telephony.call_ring.multiple=false
-
-# Sensors
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.fusion.magfield.max=250
-
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-ro.lineage.build.vendor_security_patch=2017-01-01
-
-# WIFI
-PRODUCT_PROPERTY_OVERRIDES += \
-wifi.interface=wlan0
-
-# Wi-Fi display
-PRODUCT_PROPERTY_OVERRIDES += \
-persist.debug.wfd.enable=1
+ro.lineage.build.vendor_security_patch=2019-09-05

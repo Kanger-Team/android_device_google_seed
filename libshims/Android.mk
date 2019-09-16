@@ -1,4 +1,5 @@
-# Copyright (C) 2015 The CyanogenMod Project
+#
+# Copyright (C) 2018 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,15 +18,10 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-    atomic.cpp \
-    android/sensor.cpp \
-    gui/SensorManager.cpp \
-    android/looper.cpp
-LOCAL_C_INCLUDES := gui
-LOCAL_SHARED_LIBRARIES := libgui libutils liblog libsensor_vendor libbinder
-LOCAL_MODULE := libshim_camera
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_HEADER_LIBRARIES	:= libandroid_sensor_headers
+    flp/flp.c
+
+LOCAL_MODULE := libshims_flp
+LOCAL_MODULE_TAGS := optional
 LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
