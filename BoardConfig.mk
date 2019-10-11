@@ -22,19 +22,8 @@ include device/cyanogen/msm8916-common/BoardConfigCommon.mk
 
 DEVICE_PATH := device/google/seed
 
-# Platform
-TARGET_BOARD_PLATFORM := msm8916
-BOARD_USES_QCOM_HARDWARE := true
-BOARD_USES_ADRENO := true
-TARGET_USES_QCOM_BSP := true
-TARGET_COMPILE_WITH_MSM_KERNEL := true
-TARGET_USES_MEDIA_EXTENSIONS := true
-TARGET_USES_QCOM_MM_AUDIO := true
-MSM_VIDC_TARGET_LIST := msm8916
-QCOM_HARDWARE_VARIANT := msm8916
-
-BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_PHONY_TARGETS := true
+# Audio
+USE_XML_AUDIO_POLICY_CONF := 1
 
 # Assertions
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
@@ -62,7 +51,6 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_DTBTOOL_ARGS := -2
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_SEPARATED_DT := true
@@ -80,7 +68,7 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
 # SELinux
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy_tmp
+# BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # TWRP
 ifeq ($(WITH_TWRP),true)
